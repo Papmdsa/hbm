@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bamberg Abschleppdienst | 24h Pannenhilfe & Fahrzeugbergung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+  :root {
+    --primary: #2A5C8D;
+    --primary-dark: #1E456E;
+    --secondary: #FFA500;
+    --accent: #3D7BBA;
+    --light: #F5F5F5;
+    --dark: #222222;
+    --gray: #666666;
+    --white: #FFFFFF;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+  }
+  
+  body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--dark);
+  }
+  
+  header {
+    background: var(--white);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .logo {
+    height: 70px;
+    width: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .logo:hover {
+    transform: scale(1.05);
+  }
+  
+  .text-block h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--primary);
+  }
+  
+  .subline {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--gray);
+    font-weight: 500;
+  }
+  
+  nav {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  nav a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: var(--primary-dark);
+  }
+  
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+  }
+  
+  nav a:hover::after {
+    width: 100%;
+  }
+  
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('abschieppdienst-hero.jpg') center/cover no-repeat;
+    color: var(--white);
+    margin: 0 auto;
+    max-width: 1200px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    min-height: 400px;
+  }
+  
+  .hero-content {
+    flex: 1;
+    min-width: 300px;
+    padding: 2rem;
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+  
+  .emergency-cta {
+    background-color: var(--secondary);
+    color: var(--dark);
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    display: inline-block;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .emergency-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.6);
+  }
+  
+  section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+  }
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .service-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid var(--secondary);
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .service-card h3 {
+    color: var(--primary);
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  
+  .service-icon {
+    color: var(--secondary);
+    font-size: 1.8rem;
+  }
+  
+  .benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .benefit-item {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .benefit-icon {
+    font-size: 1.8rem;
+    color: var(--secondary);
+  }
+  
+  .kontakt {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .contact-method {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    background: var(--light);
+    min-width: 200px;
+    transition: transform 0.3s ease;
+  }
+  
+  .contact-method:hover {
+    transform: scale(1.05);
+  }
+  
+  .contact-icon {
+    font-size: 2rem;
+    color: var(--primary);
+  }
+  
+  .cta {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cta a:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .testimonials {
+    background: var(--primary);
+    color: var(--white);
+    padding: 3rem 2rem;
+    border-radius: var(--radius);
+  }
+  
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .testimonial-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+  }
+  
+  .testimonial-card p {
+    font-style: italic;
+  }
+  
+  .testimonial-author {
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+  
+  footer {
+    background: var(--dark);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+  }
+  
+  .footer-links a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: var(--secondary);
+  }
+  
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem;
+    }
+    
+    .logo-container {
+      margin-bottom: 1rem;
+      justify-content: center;
+    }
+    
+    nav {
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    
+    .hero-content {
+      padding: 1rem;
+    }
+    
+    .hero h2 {
+      font-size: 2rem;
+    }
+    
+    .cta {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="hbm_logo.png" alt="Bamberg Abschleppdienst Logo" class="logo" />
+    <div class="text-block">
+      <h1>Bamberg Abschleppdienst</h1>
+      <p class="subline">24-Stunden Pannenhilfe & Fahrzeugbergung in Bamberg und Umgebung</p>
+    </div>
+  </div>
+  <nav>
+    <a href="#about">Über Uns</a>
+    <a href="#services">Leistungen</a>
+    <a href="#benefits">Vorteile</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>24h Abschleppdienst & Pannenhilfe in Bamberg</h1>
+      <p>Schnelle, zuverlässige Hilfe bei Pannen und Unfällen - rund um die Uhr, 365 Tage im Jahr. Unser erfahrenes Team steht Ihnen in jeder Situation zur Seite.</p>
+      <div class="emergency-phone">
+        <a href="tel:015756464863" class="emergency-cta">🚨 NOTRUF: 0157 56464863</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">Über Uns</h2>
+    <p>Bamberg Abschleppdienst ist Ihr zuverlässiger Partner für Fahrzeugbergung und Pannenhilfe in der Region. Mit modernsten Abschleppfahrzeugen und jahrelanger Erfahrung bieten wir professionelle Lösungen für alle Fahrzeugtypen - vom PKW bis zum LKW.</p>
+    <p>Unser Team aus zertifizierten Fachkräften versteht die Stresssituationen unserer Kunden und handelt schnell, diskret und kompetent. Wir sind stolz darauf, der vertrauenswürdigste Abschleppdienst in Bamberg zu sein.</p>
+  </section>
+
+  <section id="services">
+    <h2 class="section-title">Unsere Leistungen</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3><span class="service-icon">🚗</span> Pannenabsicherung</h3>
+        <p>Soforthilfe bei Reifenpannen, Batterieproblemen, Kraftstoffmangel und anderen kleineren Pannen direkt am Standort.</p>
+      </div>
+      <div class="service-card">
+        <h3><span class="service-icon">🚛</span> Fahrzeugbergung</h3>
+        <p>Professionelle Bergung von Unfallfahrzeugen mit spezieller Ausrüstung, schonend für Ihr Fahrzeug.</p>
+      </div>
+      <div class="service-card">
+        <h3><span class="service-icon">🏗</span> Abschleppdienst</h3>
+        <p>Sicherer Transport Ihres Fahrzeugs zur Werkstatt Ihres Vertrauens oder nach Hause.</p>
+      </div>
+      <div class="service-card">
+        <h3><span class="service-icon">🔑</span> Aufsperrdienst</h3>
+        <p>Hilfe bei verschlossenen Türen ohne Beschädigung Ihres Fahrzeugs - schnell und professionell.</p>
+      </div>
+      <div class="service-card">
+        <h3><span class="service-icon">🚚</span> LKW-Bergung</h3>
+        <p>Spezialisierte Bergung und Abschleppservice für schwere Nutzfahrzeuge und Transporter.</p>
+      </div>
+      <div class="service-card">
+        <h3><span class="service-icon">🛣️</span> Straßendienst</h3>
+        <p>Beseitigung von Fahrzeugen nach Unfällen oder Pannen von öffentlichen Straßen und Autobahnen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="benefits">
+    <h2 class="section-title">Ihre Vorteile</h2>
+    <div class="benefits">
+      <div class="benefit-item">
+        <span class="benefit-icon">⏱️</span>
+        <div>
+          <h3>24h Soforteinsatz</h3>
+          <p>Rund um die Uhr erreichbar - auch an Wochenenden und Feiertagen</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">🏆</span>
+        <div>
+          <h3>Zertifizierte Fachkräfte</h3>
+          <p>Erfahrenes Personal mit regelmäßigen Schulungen</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">🚙</span>
+        <div>
+          <h3>Moderne Fahrzeuge</h3>
+          <p>Technisch aktuellste Abschleppfahrzeuge für alle Fahrzeugtypen</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">💶</span>
+        <div>
+          <h3>Transparente Preise</h3>
+          <p>Klare Kostenvoranschläge ohne versteckte Gebühren</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">📱</span>
+        <div>
+          <h3>Digitale Abwicklung</h3>
+          <p>Einfache Auftragserteilung und digitale Rechnungsstellung</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">🔄</span>
+        <div>
+          <h3>Versicherungsabwicklung</h3>
+          <p>Unterstützung bei der Regulierung mit Ihrer Versicherung</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2 class="section-title" style="color: white;">Kundenstimmen</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>"Schnellste Hilfe mitten in der Nacht nach meinem Unfall. Professionell und einfühlsam - kann ich nur empfehlen!"</p>
+        <div class="testimonial-author">- Thomas K., Bamberg</div>
+      </div>
+      <div class="testimonial-card">
+        <p>"Mein Transporter mit defekter Batterie wurde innerhalb von 30 Minuten abgeschleppt. Tolle Leistung!"</p>
+        <div class="testimonial-author">- Sabine M., Breitengüßbach</div>
+      </div>
+      <div class="testimonial-card">
+        <p>"Habe den Service meiner Versicherung in Anspruch genommen und war begeistert von der reibungslosen Abwicklung."</p>
+        <div class="testimonial-author">- Michael R., Memmelsdorf</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="kontakt">
+    <h2 class="section-title">Kontaktieren Sie uns</h2>
+    <p>Unser Notruf ist 24 Stunden am Tag erreichbar. Für nicht dringende Anfragen nutzen Sie bitte unser Kontaktformular.</p>
+    
+    <div class="contact-info">
+      <div class="contact-method">
+        <span class="contact-icon">📞</span>
+        <h3>Notruf</h3>
+        <a href="015756464863" style="color: var(--primary); font-weight: 700;">015756464863</a>
+      </div>
+      <div class="contact-method">
+        <span class="contact-icon">📧</span>
+        <h3>E-Mail</h3>
+        <a href="mailto:burhan.sr77@gmail.com">burhan.sr77@gmail.com</a>
+      </div>
+      <div class="contact-method">
+        <span class="contact-icon">🏢</span>
+        <h3>Büro</h3>
+        <p>Starkenfelder Str, 24.<br>96047 Bamberg</p>
+      </div>
+    </div>
+    
+    <div class="cta">
+      <a href="tel:015756464863">
+        <span>📞</span> Jetzt anrufen
+      </a>
+      <a href="mailto:burhan.sr77@gmail.com">
+        <span>📧</span> E-Mail senden
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="logo-container" style="justify-content: center;">
+      <img src="abschieppdienst-logo.png" alt="Bamberg Abschleppdienst Logo" class="logo" style="height: 50px; filter: brightness(0) invert(1);" />
+      <div class="text-block">
+        <h1 style="color: white; font-size: 1.5rem;">Bamberg Abschleppdienst</h1>
+      </div>
+    </div>
+    
+    <div class="footer-links">
+      <a href="#about">Über Uns</a>
+      <a href="#services">Leistungen</a>
+      <a href="#benefits">Vorteile</a>
+      <a href="#contact">Kontakt</a>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#">AGB</a>
+    </div>
+    
+    <p>&copy; 2025 Bamberg Abschleppdienst – Professionelle Fahrzeugbergung & Pannenhilfe in Bamberg und Umgebung</p>
+  </div>
+</footer>
+
+</body>
+</html>
